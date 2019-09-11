@@ -1,5 +1,5 @@
 {
-  "name": "random-number",
+  "name": "sokoban",
   "repository": "https://github.com/SW999/sokoban",
   "homepage": "https://sw999.github.io/sokoban",
   "main": "src/index.js",
@@ -12,7 +12,6 @@
     "prebuild": "npm version patch",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "test": "jest",
     "lint": "eslint src/ --ext .js"
   },
   "author": "",
