@@ -1,0 +1,31 @@
+{
+  "name": "random-number",
+  "repository": "https://github.com/SW999/sokoban",
+  "homepage": "https://sw999.github.io/sokoban",
+  "main": "src/index.js",
+  "version": "0.0.1",
+  "description": "",
+  "scripts": {
+    "clean": "del-cli dist/*",
+    "start": "cross-env NODE_ENV=development && npm run clean && parcel src/index.html --open",
+    "build": "cross-env NODE_ENV=production && npm run clean && parcel build src/index.html --public-url ./ --no-cache --no-source-maps",
+    "prebuild": "npm version patch",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist",
+    "test": "jest",
+    "lint": "eslint src/ --ext .js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "cssnano": "^4.1.10",
+    "del-cli": "^1.1.0",
+    "eslint": "^6.2.2",
+    "gh-pages": "^2.0.1",
+    "sass": "^1.22.7"
+  }
+}

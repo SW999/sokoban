@@ -3,3 +3,6 @@
 *.map
 *.css
 *.log
+dist/
+node_modules/
+.cache/
