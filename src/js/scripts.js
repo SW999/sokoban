@@ -308,15 +308,21 @@ document.addEventListener('DOMContentLoaded', function (e) {
     stepSize = document.querySelector('.map-item').clientWidth + 3;
 
     createMap();
-    document.addEventListener('keyup', moveManager, false);
-    $map.addEventListener('swipeLeft', stepLeft, false);
-    $map.addEventListener('swipeUp', stepUp, false);
-    $map.addEventListener('swipeRight', stepRight, false);
-    $map.addEventListener('swipeDown', stepDown, false);
-    $start.addEventListener('click', function (e) {
-      e.preventDefault();
-      document.getElementById('dashboard').classList.add('hidden');
-    }, false);
+    if (document.documentElement.classList.contains('touch')) { // event listeners for mobile devices
+      document.getElementById('controls-definition').textContent = 'swipe gestures';
+      document.getElementById('undo-definition').textContent = 'undo button';
+      $map.addEventListener('swipeLeft', stepLeft, false);
+      $map.addEventListener('swipeUp', stepUp, false);
+      $map.addEventListener('swipeRight', stepRight, false);
+      $map.addEventListener('swipeDown', stepDown, false);
+      $start.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.getElementById('dashboard').classList.add('hidden');
+      }, false);
+      document.getElementById('undoBtn').addEventListener('click', undo, false);
+    } else {
+      document.addEventListener('keyup', moveManager, false);
+    }
   })();
 
 });

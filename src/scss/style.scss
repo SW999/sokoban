@@ -116,6 +116,21 @@ ul {
   }
 }
 
+.undo-btn {
+  position: absolute;
+  top: 190px;
+  right: 140px;
+  display: none;
+  padding: 10px 8px;
+  border-radius: 3px;
+  z-index: 101;
+  background-color: #fff;
+
+  .touch & {
+    display: block;
+  }
+}
+
 .passage {
   border-color: #708090;
   background-color: #708090;
