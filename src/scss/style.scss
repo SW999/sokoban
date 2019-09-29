@@ -1,4 +1,5 @@
 $white: #fff;
+$yellow: #ff0;
 $gray: #d1d1d1;
 $dark-blue: #708090;
 $black: #000;
@@ -16,7 +17,7 @@ html {
   font-size: 10px;
   -webkit-text-size-adjust: 100%;
 
-  @media (max-width: 1023px)  {
+  @media (max-width: 1023px) {
     @supports (-webkit-appearance:none) {
       &.touch {
         max-height: calc(100vh - 56px);
@@ -30,7 +31,7 @@ body {
   height: 100%;
   font: 1.4rem/1.15 'Proxima Nova Soft', 'Helvetica Neue', sans-serif;
 
-  @media (max-width: 1023px)  {
+  @media (max-width: 1023px) {
     position: relative;
     overflow: hidden;
     width: 100vw;
@@ -42,7 +43,7 @@ body {
       }
     }
   }
-  @media (min-width: 1024px)  {
+  @media (min-width: 1024px) {
     position: static;
     display: flex;
     justify-content: center;
@@ -61,15 +62,13 @@ ul {
 }
 
 .wrapper {
+  width: 100vw;
+  height: 100vh;
   z-index: 1;
-  border: thin solid #6b6b6b;
+  border: .1rem solid #6b6b6b;
   background-color: #252525;
 
-  @media (max-width: 1023px)  {
-    width: 100vw;
-    height: 100vh;
-  }
-  @media (min-width: 1024px)  {
+  @media (min-width: 1024px) {
     display: flex;
     flex-flow: row nowrap;
     align-items: stretch;
@@ -81,18 +80,18 @@ ul {
 .map {
   display: flex;
   flex-flow: row wrap;
-  position: relative;
-  width: 100%;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 57.9rem;
   padding: 0 0 1px 1px;
+  transform: translateX(-50%) translateY(-50%);
 
-  @media (max-width: 1023px)  {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    width: 57.9rem;
-    transform: translateX(-50%) translateY(-50%);
-  }
-  @media (min-width: 1024px)  {
+  @media (min-width: 1024px) {
+    position: relative;
+    top: unset;
+    left: unset;
+    transform: unset;
     width: calc(60% + 3px);
   }
 }
@@ -101,8 +100,8 @@ ul {
   width: 3.5rem;
   height: 3.5rem;
   margin: 1px 1px 0 0;
-  border: thin solid #373737;
-  border-radius: 2px;
+  border: .1rem solid #373737;
+  border-radius: .2rem;
 }
 
 .links {
@@ -127,6 +126,7 @@ ul {
 }
 
 .workplace {
+  border-color: $dark-blue;
   background: url('../img/persons.png') 0 0 no-repeat $dark-blue;
 }
 
@@ -135,7 +135,7 @@ ul {
   width: 5.1rem;
   height: 5.1rem;
   border-radius: 50%;
-  box-shadow: 0 0 20px 10px $white, 0 0 50px 25px #ff0;
+  box-shadow: 0 0 2rem 1rem $white, 0 0 5rem 2.5rem $yellow;
   background: url('../img/kenny-angel.png') center center no-repeat $white;
   background-size: contain;
   transform: scale(0) translateY(0);
@@ -151,12 +151,12 @@ ul {
   position: absolute;
   width: 3.5rem;
   height: 3.5rem;
-  border: thin solid $dark-blue;
-  border-radius: 2px;
+  border: .1rem solid $dark-blue;
+  border-radius: .2rem;
 }
 
 .manager {
-  background: url('../img/persons.png') -297px 0 no-repeat $dark-blue;
+  background: url('../img/persons.png') -29.7rem 0 no-repeat $dark-blue;
   border-color: #ffd700;
 }
 
@@ -164,7 +164,7 @@ ul {
   background-image: url('../img/persons.png');
 
   &.dead {
-    background-position: -330px 0 !important;
+    background-position: -33rem 0 !important;
     animation: explode 1s linear;
   }
 }
@@ -172,7 +172,7 @@ ul {
 .dashboard {
   display: flex;
   flex-direction: column;
-  border: thin solid $black;
+  border: .1rem solid $black;
   border-radius: 2px;
   background: linear-gradient(to bottom, rgba(149, 149, 149, 1) 0%, rgba(13, 13, 13, 1) 46%, rgba(1, 1, 1, 1) 50%, rgba(10, 10, 10, 1) 53%, rgba(78, 78, 78, 1) 76%, rgba(56, 56, 56, 1) 87%, rgba(27, 27, 27, 1) 100%);
   transform: translateX(0);
@@ -182,7 +182,7 @@ ul {
     transform: translateX(100%);
   }
 
-  @media (max-width: 1023px)  {
+  @media (max-width: 1023px) {
     position: absolute;
     top: 0;
     left: 0;
@@ -198,14 +198,14 @@ ul {
     }
   }
 
-  @media (min-width: 1024px)  {
+  @media (min-width: 1024px) {
     width: calc(40% - 3px);
     height: 100%;
   }
 
   h1 {
     padding: 1.8rem 0;
-    border-bottom: thin solid $black;
+    border-bottom: .1rem solid $black;
     text-align: center;
     text-shadow: 1px 1px 0 #999;
     box-shadow: 0 1px 0 #9b9b9b;
@@ -250,7 +250,7 @@ ul {
         content: open-quote;
         position: relative;
         left: -1rem;
-        top: 5px;
+        top: .5rem;
         font-size: 2.4rem;
         line-height: 0;
       }
@@ -258,8 +258,8 @@ ul {
       &:after {
         content: close-quote;
         position: relative;
-        left: 10px;
-        top: 5px;
+        left: 1rem;
+        top: .5rem;
         font-size: 1.5em;
         line-height: 0;
       }
@@ -273,7 +273,7 @@ ul {
   }
 
   25% {
-    background-color: #FFF600;
+    background-color: $yellow;
   }
 
   50% {
@@ -299,31 +299,31 @@ ul {
   }
 
   10% {
-    transform: scale(0.3) translateY(-30px);
+    transform: scale(0.3) translateY(-3rem);
   }
 
   25% {
-    transform: scale(1) translateY(-70px);
+    transform: scale(1) translateY(-7rem);
   }
 
   50% {
-    transform: scale(1.2) translateY(-160px);
+    transform: scale(1.2) translateY(-16rem);
   }
 
   75% {
-    transform: scale(1.5) translateY(-250px);
+    transform: scale(1.5) translateY(-25rem);
   }
 
   80% {
-    transform: scale(2) translateY(-290px);
+    transform: scale(2) translateY(-29rem);
   }
 
   95% {
-    transform: scale(2.5) translateY(-320px);
+    transform: scale(2.5) translateY(-32rem);
   }
 
   100% {
-    transform: scale(4) translateY(-500px);
+    transform: scale(4) translateY(-50rem);
   }
 }
 
@@ -362,21 +362,23 @@ button {
 
 /* Gradients */
 .bg_image {
+  display: flex;
+  flex-flow: row nowrap;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-flow: row nowrap;
 }
 
 .sky-gradient {
-  @media (max-width: 1023px)  {
-    display: none;
+  display: none;
+
+  @media (min-width: 1024px) {
+    display: block;
+    width: 4%;
+    height: 100%;
   }
-  width: 4%;
-  height: 100%;
 
   &-00,
   &-24 {

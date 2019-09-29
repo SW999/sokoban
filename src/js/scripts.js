@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', function (e) {
-
   var mapBlocks, // массив элементов игрового поля по классу
     world = {
       map: [ // 1 - возможно перемещение, 2 - выигрышное положение
@@ -25,7 +24,6 @@ document.addEventListener('DOMContentLoaded', function (e) {
     mapHeight = world.map.length,
     leftMarginMap = ~~((playingFieldSize - mapWidth) / 2),
     topMarginMap = ~~((playingFieldSize - mapHeight) / 2),
-    blockPos,
     bgPos = -297,
     stepSize, // ширина одного элемента поля с отступами = шаг персонажа
     winComb = [], // массив с координатами "выигрышных" положений
@@ -35,22 +33,21 @@ document.addEventListener('DOMContentLoaded', function (e) {
   function findPos(obj) {
     if (obj.offsetParent) {
       return [obj.offsetLeft, obj.offsetTop];
-    } else {
-      return false;
     }
   }
 
   function createMap() {
     var fragment = document.createDocumentFragment(),
       count = 0;
+
     world.map.forEach(function (v, i) {
       world.map.forEach(function (v1, j) {
         var block,
           mapEl = world.map[i][j],
-          personStatus = world.person[i][j];
+          personStatus = world.person[i][j],
+          blockPos = (topMarginMap + i) * playingFieldSize + leftMarginMap + j;
 
-        blockPos = (topMarginMap + i) * playingFieldSize + leftMarginMap + j;
-        if (mapEl > 0) {
+        if (mapEl === 1) {
           mapBlocks[blockPos].classList.add('passage');
         }
         if (mapEl === 2) {
@@ -60,6 +57,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
         if (personStatus === 1) {
           var thisId = "slacker" + count++;
+
           block = document.createElement('div');
           bgPos += stepSize - 3;
           block.className = "person employee";
@@ -119,19 +117,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
         top: manager.el.style.top,
         pos: manager.pos.slice()
       },
-      lastElem: (function () {
-        if (obj !== null) {
-          return {
-            el: obj.id,
-            left: obj.id.style.left,
-            top: obj.id.style.top,
-            pos1: [obj.prevPos[0], obj.prevPos[1]],
-            pos2: [obj.curPos[0], obj.curPos[1]]
-          }
-        } else {
-          return false;
-        }
-      })()
+      lastElem: obj === null ? false : {
+        el: obj.id,
+        left: obj.id.style.left,
+        top: obj.id.style.top,
+        pos1: [obj.prevPos[0], obj.prevPos[1]],
+        pos2: [obj.curPos[0], obj.curPos[1]]
+      }
     }
   }
 
@@ -150,6 +142,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (world.map[y][x]) {
       var leftPos = world.person[y][x];
       newPos = parseInt(manager.el.style.left, 10) - stepSize + 'px';
+
       if (leftPos && world.map[y][x - 1] && !world.person[y][x - 1]) {
         prevStatus({ id: leftPos, prevPos: [y, x], curPos: [y, x - 1] });
         leftPos.style.left = (parseInt(leftPos.style.left, 10) - stepSize) + 'px';
@@ -175,6 +168,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (manager.pos[0] > 0 && world.map[y][x]) {
       var topPos = world.person[y][x];
       newPos = parseInt(manager.el.style.top, 10) - stepSize + 'px';
+
       if ((y + 1) > 1 && topPos && world.map[y - 1][x] && !world.person[y - 1][x]) {
         prevStatus({ id: topPos, prevPos: [y, x], curPos: [y - 1, x] });
         topPos.style.top = (parseInt(topPos.style.top, 10) - stepSize) + 'px';
@@ -200,6 +194,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if (world.map[y][x]) {
       var rightPos = world.person[y][x];
       newPos = parseInt(manager.el.style.left, 10) + stepSize + 'px';
+
       if (rightPos && world.map[y][x + 1] && !world.person[y][x + 1]) {
         prevStatus({ id: rightPos, prevPos: [y, x], curPos: [y, x + 1] });
         rightPos.style.left = (parseInt(rightPos.style.left, 10) + stepSize) + 'px';
@@ -225,6 +220,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
     if ((y - 1) < (mapHeight - 1) && world.map[y][x]) {
       var bottomPos = world.person[y][x];
       newPos = parseInt(manager.el.style.top, 10) + stepSize + 'px';
+
       if ((y - 1) < (mapHeight - 2) && bottomPos && world.map[y + 1][x] && !world.person[y + 1][x]) {
         prevStatus({ id: bottomPos, prevPos: [y, x], curPos: [y + 1, x] });
         bottomPos.style.top = (parseInt(bottomPos.style.top, 10) + stepSize) + 'px';
@@ -247,6 +243,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
     if (tmpStatus.lastElem) { // Если перемещался персонаж, то возвращаем его на предыдущее место
       var el = tmpStatus.lastElem.el;
+
       el.style.left = tmpStatus.lastElem.left;
       el.style.top = tmpStatus.lastElem.top;
       world.person[tmpStatus.lastElem.pos1[0]][tmpStatus.lastElem.pos1[1]] = el;
@@ -255,10 +252,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
   }
 
   function moveManager(e) {
-    var code = e.which,
-      newPos,
-      x, y,
-      param = {};// параметры для отмены хода
+    var code = e.which;
 
     switch (code) {
       case 37: //left
