@@ -6,7 +6,7 @@ It was made in *2014* just for fun. There is only one level
 
 ## Controls
 
-Use the arrows to control and space to undo the move.
+Use the arrows (**swipe gestures** on mobile) to control and space (**undo button** on mobile) to undo the move.
 
 ## Legend
 
