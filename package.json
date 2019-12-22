@@ -3,7 +3,7 @@
   "repository": "https://github.com/SW999/sokoban",
   "homepage": "https://sw999.github.io/sokoban",
   "main": "src/index.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "",
   "scripts": {
     "clean": "del-cli dist/*",

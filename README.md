@@ -1,7 +1,7 @@
 # Sokoban
 
-Unfinished game (*creepy code*) based on [Sokoban](https://en.wikipedia.org/wiki/Sokoban)
-![Sokoban game](../master/src/img/ScreenShot.jpg)
+Unfinished game (*code smells a bit*) based on [Sokoban](https://en.wikipedia.org/wiki/Sokoban)
+![Sokoban game](https://user-images.githubusercontent.com/3176886/71323666-abb40080-24e6-11ea-93a6-a94775d76ae2.jpg)
 
 It was made in *2014* just for fun. There is only one level
 
