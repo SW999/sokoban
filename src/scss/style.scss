@@ -155,7 +155,7 @@ ul {
   border-radius: .2rem;
 }
 
-.manager {
+.boss {
   background: url('../img/persons.png') -29.7rem 0 no-repeat $dark-blue;
   border-color: #ffd700;
 }
@@ -361,7 +361,7 @@ button {
 }
 
 /* Gradients */
-.bg_image {
+.bg_wrapper {
   display: flex;
   flex-flow: row nowrap;
   position: fixed;
