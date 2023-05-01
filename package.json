@@ -21,7 +21,7 @@
   "devDependencies": {
     "cross-env": "^5.2.0",
     "cssnano": "^4.1.10",
-    "del-cli": "^1.1.0",
+    "del-cli": "^5.0.0",
     "eslint": "^6.2.2",
     "gh-pages": "^2.0.1",
     "sass": "^1.22.7"
